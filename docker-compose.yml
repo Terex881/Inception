@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mariadb:
+    # image: debian:bullseye
+    restart: always
+    build: ./mariadb
+    networks:
+      - my-net
+
+  wordpress:
+    restart: always
+    build: ./wordpress
+    networks:
+      - my-net
+    depends_on:
+      - mariadb
+  nginx:
+    restart: always
+    build: ./nginx
+    networks:
+      - my-net
+    
+
+networks:
+  my-net:

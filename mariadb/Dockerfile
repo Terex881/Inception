@@ -7,5 +7,5 @@ COPY mariadb.sh /mariadb.sh
 
 RUN chmod +x ./mariadb.sh  
 
-CMD ["echo HELLO"]
+
 ENTRYPOINT ["./mariadb.sh"]

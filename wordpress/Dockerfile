@@ -14,4 +14,4 @@ COPY wordpress.sh /wordpress.sh
 RUN chmod +x /wordpress.sh
 
 # Run the script at container startup
-ENTRYPOINT ["/wordpress.sh"]
+ENTRYPOINT ["./wordpress.sh"]
