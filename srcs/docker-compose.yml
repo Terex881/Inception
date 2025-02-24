@@ -5,8 +5,12 @@ services:
     image: mariadb:sdemnati
     restart: always
     build: ./mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
     networks:
       - my-net
+    env_file:
+      - .env
 
   wordpress:
     image: mariadb:sdemnati
@@ -14,8 +18,12 @@ services:
     build: ./wordpress
     networks:
       - my-net
+    volumes:
+      - wordpress:/var/www/wordpress
     depends_on:
       - mariadb
+    env_file:
+      - .env
   nginx:
     image: nginx:sdemnati
     restart: always
@@ -23,6 +31,22 @@ services:
     networks:
       - my-net
     
+
+  
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      device: /Users/sdemnati/data/mariadb
+      type: none
+      o: bind
+
+  wordpress:
+    driver: local
+    driver_opts:
+      device: /Users/sdemnati/data/wordpress
+      type: none
+      o: bind
 
 networks:
   my-net:
