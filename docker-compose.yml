@@ -2,13 +2,14 @@ version: '3.8'
 
 services:
   mariadb:
-    # image: debian:bullseye
+    image: mariadb:sdemnati
     restart: always
     build: ./mariadb
     networks:
       - my-net
 
   wordpress:
+    image: mariadb:sdemnati
     restart: always
     build: ./wordpress
     networks:
@@ -16,6 +17,7 @@ services:
     depends_on:
       - mariadb
   nginx:
+    image: nginx:sdemnati
     restart: always
     build: ./nginx
     networks:
