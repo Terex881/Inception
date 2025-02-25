@@ -11,9 +11,11 @@ services:
       - my-net
     env_file:
       - .env
+    ports:
+      - "3306:3306"
 
   wordpress:
-    image: mariadb:sdemnati
+    image: wordpress:sdemnati
     restart: always
     build: ./wordpress
     networks:
@@ -30,9 +32,13 @@ services:
     build: ./nginx
     networks:
       - my-net
-    
+    ports:
+      - "80:80"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
 
-  
 volumes:
   mariadb:
     driver: local
