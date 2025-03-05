@@ -33,13 +33,10 @@ echo "Configuring database settings..."
 wp config set --allow-root DB_NAME ${MYSQLDB} 
 wp config set --allow-root DB_USER ${MYSQLUSER}
 wp config set --allow-root DB_PASSWORD ${MYSQLPASSWORD}
-wp config set --allow-root DB_HOST ${MYSQLHOST} #"mariadb:3306"
+wp config set --allow-root DB_HOST ${MYSQLHOST}
 
 echo "Installing WordPress..."
 wp core install --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --skip-email --allow-root 
-
-
-
 
 echo "Updating PHP-FPM configuration..."
 sed -i 's|^listen = /run/php/php7.4-fpm.sock|listen = 9000|' /etc/php/7.4/fpm/pool.d/www.conf
