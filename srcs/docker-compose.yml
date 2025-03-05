@@ -4,7 +4,7 @@ services:
   mariadb:
     image: mariadb:sdemnati
     restart: always
-    build: ./mariadb
+    build: ./requirements/mariadb
     volumes:
       - mariadb:/var/lib/mysql
     networks:
@@ -17,7 +17,7 @@ services:
   wordpress:
     image: wordpress:sdemnati
     restart: always
-    build: ./wordpress
+    build: ./requirements/wordpress
     networks:
       - my-net
     volumes:
@@ -29,7 +29,7 @@ services:
   nginx:
     image: nginx:sdemnati
     restart: always
-    build: ./nginx
+    build: ./requirements/nginx
     networks:
       - my-net
     ports:
