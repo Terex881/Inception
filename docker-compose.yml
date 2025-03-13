@@ -40,7 +40,15 @@ services:
       - wordpress
     volumes:
       - wordpress:/var/www/wordpress
-
+  redis:
+    container_name: redis
+    image: redis:sdemnati
+    restart: always
+    build: ./bonus/redis
+    networks:
+      - my-net
+    ports:
+      - "6380:6379"
 volumes:
   mariadb:
     driver: local
