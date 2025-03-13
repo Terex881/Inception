@@ -35,6 +35,18 @@ wp config set --allow-root DB_USER ${MYSQLUSER}
 wp config set --allow-root DB_PASSWORD ${MYSQLPASSWORD}
 wp config set --allow-root DB_HOST ${MYSQLHOST}
 
+echo "Configuring Redis settings..."
+wp config set --allow-root WP_REDIS_HOST ${WP_REDIS_HOST}
+wp config set --allow-root WP_REDIS_PORT ${WP_REDIS_PORT}
+wp config set --allow-root WP_CACHE ${WP_CACHE}
+
+echo "Installing and activating Redis Cache plugin..."
+wp plugin install redis-cache --activate --allow-root
+
+echo "Enabling Redis Cache..."
+wp redis enable --allow-root
+
+
 echo "Installing WordPress..."
 wp core install --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --skip-email --allow-root 
 
