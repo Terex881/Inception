@@ -49,6 +49,15 @@ services:
       - my-net
     ports:
       - "6380:6379"
+  adminer:
+    container_name: adminer
+    image: adminer:sdemnati
+    restart: always
+    build: ./bonus/adminer
+    networks:
+      - my-net
+    ports:
+      - "8888:8888"
 volumes:
   mariadb:
     driver: local

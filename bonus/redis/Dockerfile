@@ -1,9 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update -y && apt upgrade -y && apt install -y redis
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y redis
 
-COPY redis.sh /redis.sh
-
-RUN chmod +x /redis.sh
-
-ENTRYPOINT ["bash", "/redis.sh" ]
+ENTRYPOINT ["redis-server", "--protected-mode", "no", "--appendonly", "no", \
+                            "--maxmemory", "500mb", "--maxmemory-policy", "allkeys-lru"]

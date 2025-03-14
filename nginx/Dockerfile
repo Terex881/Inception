@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update -y && apt upgrade -y && apt install -y nginx vim openssl
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y nginx openssl
 
 RUN mkdir /etc/nginx/ssl && \
     openssl req -x509 -newkey rsa:4096 \

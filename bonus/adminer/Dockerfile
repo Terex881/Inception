@@ -1,11 +1,7 @@
 FROM debian:bullseye
 
-RUN apt update -y && apt upgrade -y && apt install -y php wget
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y adminer
 
-RUN mkdir -p /var/www/html
+RUN cp /usr/share/adminer/adminer.php /usr/share/adminer/index.php
 
-RUN wget "https://www.adminer.org/latest.php" -O /var/www/html/adminer.php
-
-EXPOSE 8080
-
-CMD ["php", "-S", "0.0.0.0:8080", "-t", "/var/www/html"]
+ENTRYPOINT ["php", "-S", "0.0.0.0:8888", "-t", "/usr/share/adminer/"]

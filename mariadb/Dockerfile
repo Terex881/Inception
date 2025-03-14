@@ -1,11 +1,9 @@
 FROM debian:bullseye
 
-RUN apt update -y && apt upgrade -y && apt install -y mariadb-server vim 
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y mariadb-server
 
-#remove  vim
-
-COPY mariadb.sh /mariadb.sh
+COPY mariadb.sh ./mariadb.sh
 
 RUN chmod +x ./mariadb.sh  
 
-ENTRYPOINT [ "bash", "/mariadb.sh" ]
+ENTRYPOINT [ "./mariadb.sh" ]

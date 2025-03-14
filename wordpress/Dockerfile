@@ -1,9 +1,6 @@
 FROM debian:bullseye
 
-RUN apt update && apt install -y curl wget php php-fpm php-mysql vim 
-
-#remove  vim
-
+RUN apt-get update && apt-get install -y curl wget php php-fpm php-mysql
 COPY wordpress.sh /wordpress.sh
 
 RUN chmod +x /wordpress.sh
