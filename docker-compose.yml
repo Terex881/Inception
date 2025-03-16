@@ -15,6 +15,8 @@ services:
       - .env
     ports:
       - 3306:3306
+    secrets:
+      - db_password
   # WordPress Service
   wordpress:
     container_name: wordpress
@@ -31,6 +33,8 @@ services:
       - .env
     ports:
       - 9000:9000
+    secrets:
+      - db_password
   # Nginx Service
   nginx:
     container_name: nginx
@@ -46,45 +50,45 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
   # Redis Service
-  # redis:
-  #   container_name: redis
-  #   image: redis:sdemnati
-  #   restart: always
-  #   build: ./bonus/redis
-  #   networks:
-  #     - my-net
-  #   ports:
-  #     - 6379:6379
-  # # Static Website Service
-  # static-website:
-  #   container_name: static-website
-  #   image: static-website:sdemnati
-  #   restart: always
-  #   build: ./bonus/static-website
-  #   networks:
-  #     - my-net
-  #   ports:
-  #     - "8080:8080"
-  # # Adminer Service
-  # adminer:
-  #   container_name: adminer
-  #   image: adminer:sdemnati
-  #   restart: always
-  #   build: ./bonus/adminer
-  #   networks:
-  #     - my-net
-  #   ports:
-  #     - 8000:8000
-  # # Portainer Service
-  # portainer:
-  #   image: portainer:sdemnati
-  #   container_name: portainer
-  #   restart: always
-  #   build: ./bonus/portainer
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   ports:
-  #     - 9001:9000
+  redis:
+    container_name: redis
+    image: redis:sdemnati
+    restart: always
+    build: ./bonus/redis
+    networks:
+      - my-net
+    ports:
+      - 6379:6379
+  # Static Website Service
+  static-website:
+    container_name: static-website
+    image: static-website:sdemnati
+    restart: always
+    build: ./bonus/static-website
+    networks:
+      - my-net
+    ports:
+      - "8080:8080"
+  # Adminer Service
+  adminer:
+    container_name: adminer
+    image: adminer:sdemnati
+    restart: always
+    build: ./bonus/adminer
+    networks:
+      - my-net
+    ports:
+      - 8000:8000
+  # Portainer Service
+  portainer:
+    image: portainer:sdemnati
+    container_name: portainer
+    restart: always
+    build: ./bonus/portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9001:9000
   # FTP Server Service
   ftp:
     image: ftp:sdemnati
@@ -118,6 +122,10 @@ volumes:
       device: /home/sdemnati/data/wordpress
       type: none
       o: bind
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
 
 networks:
   my-net:
