@@ -12,7 +12,7 @@ echo "Removing any existing files in the WordPress directory..."
 rm -rf *
 
 echo "Downloading wp-cli.phar..."
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar  
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 echo "Making wp-cli.phar executable..."
 chmod +x wp-cli.phar
@@ -51,7 +51,7 @@ echo "Installing WordPress..."
 wp core install --url=$W_DN --title=$W_TITLE --admin_user=$W_A_N --admin_password=$W_A_P --admin_email=$W_E_A --skip-email --allow-root 
 
 echo "Updating PHP-FPM configuration..."
-sed -i 's|^listen = /run/php/php7.4-fpm.sock|listen = 9000|' /etc/php/7.4/fpm/pool.d/www.conf
+sed -i '36s@/run/php/php7.4-fpm.sock@9000@' /etc/php/7.4/fpm/pool.d/www.conf
 
 echo "Starting PHP-FPM in the foreground..."
 exec php-fpm7.4 -F

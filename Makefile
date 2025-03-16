@@ -1,14 +1,14 @@
 all:
-	mkdir -p /home/sdemnati/data/wordpress
-	mkdir -p /home/sdemnati/data/mariadb
-	docker-compose -f docker-compose.yml up --build
+	sudo mkdir -p /home/sdemnati/data/wordpress
+	sudo mkdir -p /home/sdemnati/data/mariadb
+	docker-compose -f  docker-compose.yml up --build > /dev/null
 
 clean:
 	docker-compose -f docker-compose.yml down -v
 
 fclean: clean
 	docker system prune -af --volumes
-	rm -rf /home/sdemnati/data/mariadb
-	rm -rf /home/sdemnati/data/wordpress
+	sudo rm -rf /home/sdemnati/data/mariadb
+	sudo rm -rf /home/sdemnati/data/wordpress
 
 re: fclean all

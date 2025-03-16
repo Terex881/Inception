@@ -9,5 +9,4 @@ WORKDIR /var/www/wordpress
 
 RUN mkdir -p /run/php
 
-# CMD ["./wordpress.sh"]
-ENTRYPOINT ["bash", "/wordpress.sh" ]
+ENTRYPOINT ["/wordpress.sh"]

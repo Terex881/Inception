@@ -6,4 +6,4 @@ COPY mariadb.sh ./mariadb.sh
 
 RUN chmod +x ./mariadb.sh  
 
-ENTRYPOINT [ "./mariadb.sh" ]
+ENTRYPOINT ["./mariadb.sh"]

@@ -1,6 +1,7 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  # Database Service
   mariadb:
     image: mariadb:sdemnati
     container_name: mariadb
@@ -13,7 +14,8 @@ services:
     env_file:
       - .env
     ports:
-      - "3306:3306"
+      - 3306:3306
+  # WordPress Service
   wordpress:
     container_name: wordpress
     image: wordpress:sdemnati
@@ -27,6 +29,9 @@ services:
       - mariadb
     env_file:
       - .env
+    ports:
+      - 9000:9000
+  # Nginx Service
   nginx:
     container_name: nginx
     image: nginx:sdemnati
@@ -35,29 +40,70 @@ services:
     networks:
       - my-net
     ports:
-      - "443:443"
+      - 443:443
     depends_on:
       - wordpress
     volumes:
       - wordpress:/var/www/wordpress
-  redis:
-    container_name: redis
-    image: redis:sdemnati
-    restart: always
-    build: ./bonus/redis
+  # Redis Service
+  # redis:
+  #   container_name: redis
+  #   image: redis:sdemnati
+  #   restart: always
+  #   build: ./bonus/redis
+  #   networks:
+  #     - my-net
+  #   ports:
+  #     - 6379:6379
+  # # Static Website Service
+  # static-website:
+  #   container_name: static-website
+  #   image: static-website:sdemnati
+  #   restart: always
+  #   build: ./bonus/static-website
+  #   networks:
+  #     - my-net
+  #   ports:
+  #     - "8080:8080"
+  # # Adminer Service
+  # adminer:
+  #   container_name: adminer
+  #   image: adminer:sdemnati
+  #   restart: always
+  #   build: ./bonus/adminer
+  #   networks:
+  #     - my-net
+  #   ports:
+  #     - 8000:8000
+  # # Portainer Service
+  # portainer:
+  #   image: portainer:sdemnati
+  #   container_name: portainer
+  #   restart: always
+  #   build: ./bonus/portainer
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   ports:
+  #     - 9001:9000
+  # FTP Server Service
+  ftp:
+    image: ftp:sdemnati
+    build: ./bonus/ftp
+    container_name: ftp
+    ports:
+      - "50000-50001:50000-50001"
+      - "21:21"
+      - "20:20"
+    volumes:
+      - wordpress:/home/$USERFTP/ftp
+    depends_on:
+      - wordpress
+    env_file:
+      - .env
     networks:
       - my-net
-    ports:
-      - "6380:6379"
-  adminer:
-    container_name: adminer
-    image: adminer:sdemnati
     restart: always
-    build: ./bonus/adminer
-    networks:
-      - my-net
-    ports:
-      - "8888:8888"
+
 volumes:
   mariadb:
     driver: local
@@ -75,4 +121,4 @@ volumes:
 
 networks:
   my-net:
-    # driver: bridge
+    driver: bridge

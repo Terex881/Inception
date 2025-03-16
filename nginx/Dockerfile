@@ -10,4 +10,4 @@ RUN mkdir /etc/nginx/ssl && \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
