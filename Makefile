@@ -1,7 +1,7 @@
 all:
 	sudo mkdir -p /home/sdemnati/data/wordpress
 	sudo mkdir -p /home/sdemnati/data/mariadb
-	docker-compose -f  docker-compose.yml up --build > /dev/null
+	docker-compose -f docker-compose.yml up --build > /dev/null
 
 clean:
 	docker-compose -f docker-compose.yml down -v

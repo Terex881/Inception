@@ -15,8 +15,8 @@ services:
       - .env
     ports:
       - 3306:3306
-    secrets:
-      - db_password
+    # secrets:
+    #   - db_password
   # WordPress Service
   wordpress:
     container_name: wordpress
@@ -33,8 +33,8 @@ services:
       - .env
     ports:
       - 9000:9000
-    secrets:
-      - db_password
+    # secrets:
+    #   - db_password
   # Nginx Service
   nginx:
     container_name: nginx
@@ -97,9 +97,9 @@ services:
     ports:
       - "50000-50001:50000-50001"
       - "21:21"
-      - "20:20"
+      # - "20:20"
     volumes:
-      - wordpress:/home/$USERFTP/ftp
+      - wordpress:/home/$FTP_USER/ftp
     depends_on:
       - wordpress
     env_file:
@@ -123,9 +123,9 @@ volumes:
       type: none
       o: bind
 
-secrets:
-  db_password:
-    file: ./secrets/db_password.txt
+# secrets:
+#   db_password:
+    # file: ./secrets/db_password.txt
 
 networks:
   my-net:
