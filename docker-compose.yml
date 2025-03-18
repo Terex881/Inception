@@ -3,8 +3,8 @@ version: "3.8"
 services:
   # Database Service
   mariadb:
-    image: mariadb:sdemnati
     container_name: mariadb
+    image: mariadb:sdemnati
     restart: always
     build: ./mariadb
     volumes:
@@ -15,8 +15,8 @@ services:
       - .env
     ports:
       - 3306:3306
-    # secrets:
-    #   - db_password
+    secrets:
+      - db_password
   # WordPress Service
   wordpress:
     container_name: wordpress
@@ -33,20 +33,22 @@ services:
       - .env
     ports:
       - 9000:9000
-    # secrets:
-    #   - db_password
+    secrets:
+      - db_password
+      - wp_admin_password
+      - wp_user_password
   # Nginx Service
   nginx:
     container_name: nginx
     image: nginx:sdemnati
     restart: always
     build: ./nginx
+    depends_on:
+      - wordpress
     networks:
       - my-net
     ports:
       - 443:443
-    depends_on:
-      - wordpress
     volumes:
       - wordpress:/var/www/wordpress
   # Redis Service
@@ -81,23 +83,24 @@ services:
       - 8000:8000
   # Portainer Service
   portainer:
-    image: portainer:sdemnati
     container_name: portainer
+    image: portainer:sdemnati
     restart: always
     build: ./bonus/portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - my-net
     ports:
       - 9001:9000
   # FTP Server Service
   ftp:
+    container_name: ftp
     image: ftp:sdemnati
     build: ./bonus/ftp
-    container_name: ftp
     ports:
       - "50000-50001:50000-50001"
       - "21:21"
-      # - "20:20"
     volumes:
       - wordpress:/home/$FTP_USER/ftp
     depends_on:
@@ -107,7 +110,9 @@ services:
     networks:
       - my-net
     restart: always
-
+    secrets:
+      - ftp_user_password
+# volumes
 volumes:
   mariadb:
     driver: local
@@ -122,11 +127,17 @@ volumes:
       device: /home/sdemnati/data/wordpress
       type: none
       o: bind
-
-# secrets:
-#   db_password:
-    # file: ./secrets/db_password.txt
-
+# secrets
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  wp_admin_password:
+    file: ./secrets/wp_admin_password.txt
+  wp_user_password:
+    file: ./secrets/wp_user_password.txt
+  ftp_user_password:
+    file: ./secrets/ftp_user_password.txt
+# networks
 networks:
   my-net:
     driver: bridge

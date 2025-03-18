@@ -7,6 +7,4 @@ RUN mkdir -p /opt/portainer && \
     tar -xzf /opt/portainer.tar.gz -C /opt/portainer --strip-components=1 && \
     rm /opt/portainer.tar.gz
 
-WORKDIR /opt/portainer
-
 ENTRYPOINT ["/opt/portainer/portainer"]
