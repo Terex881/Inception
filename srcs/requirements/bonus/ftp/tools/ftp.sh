@@ -12,9 +12,11 @@ echo "$FTP_USER" >> /etc/vsftpd.userlist
 
 echo "anonymous_enable=NO
 local_enable=YES
+write_enable=YES
+pasv_enable=YES
 pasv_min_port=50000
 pasv_max_port=50001
-write_enable=YES
+pasv_address=0.0.0.0
 local_root=/home/$FTP_USER/ftp" >> /etc/vsftpd.conf
 
 service vsftpd stop

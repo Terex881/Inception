@@ -6,7 +6,7 @@ services:
     container_name: mariadb
     image: mariadb:sdemnati
     restart: always
-    build: ./mariadb
+    build: ./requirements/mariadb
     volumes:
       - mariadb:/var/lib/mysql
     networks:
@@ -22,7 +22,7 @@ services:
     container_name: wordpress
     image: wordpress:sdemnati
     restart: always
-    build: ./wordpress
+    build: ./requirements/wordpress
     networks:
       - my-net
     volumes:
@@ -42,7 +42,7 @@ services:
     container_name: nginx
     image: nginx:sdemnati
     restart: always
-    build: ./nginx
+    build: ./requirements/nginx
     depends_on:
       - wordpress
     networks:
@@ -56,7 +56,7 @@ services:
     container_name: redis
     image: redis:sdemnati
     restart: always
-    build: ./bonus/redis
+    build: ./requirements/bonus/redis
     networks:
       - my-net
     ports:
@@ -66,7 +66,7 @@ services:
     container_name: static-website
     image: static-website:sdemnati
     restart: always
-    build: ./bonus/static-website
+    build: ./requirements/bonus/static-website
     networks:
       - my-net
     ports:
@@ -76,7 +76,7 @@ services:
     container_name: adminer
     image: adminer:sdemnati
     restart: always
-    build: ./bonus/adminer
+    build: ./requirements/bonus/adminer
     networks:
       - my-net
     ports:
@@ -86,7 +86,7 @@ services:
     container_name: portainer
     image: portainer:sdemnati
     restart: always
-    build: ./bonus/portainer
+    build: ./requirements/bonus/portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -97,7 +97,7 @@ services:
   ftp:
     container_name: ftp
     image: ftp:sdemnati
-    build: ./bonus/ftp
+    build: ./requirements/bonus/ftp
     ports:
       - "50000-50001:50000-50001"
       - "21:21"
@@ -130,13 +130,13 @@ volumes:
 # secrets
 secrets:
   db_password:
-    file: ./secrets/db_password.txt
+    file: ../secrets/db_password.txt
   wp_admin_password:
-    file: ./secrets/wp_admin_password.txt
+    file: ../secrets/wp_admin_password.txt
   wp_user_password:
-    file: ./secrets/wp_user_password.txt
+    file: ../secrets/wp_user_password.txt
   ftp_user_password:
-    file: ./secrets/ftp_user_password.txt
+    file: ../secrets/ftp_user_password.txt
 # networks
 networks:
   my-net:

@@ -8,6 +8,6 @@ RUN mkdir /etc/nginx/ssl && \
     -out /etc/nginx/ssl/cert.crt -sha256 \
     -days 365 -nodes -subj="/CN=sdemnati.42.fr"
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 ENTRYPOINT ["nginx"]
