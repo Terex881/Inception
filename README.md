@@ -315,21 +315,70 @@ In addition, it is possible to separate the web server and PHP by establishing a
      ```
        make clean
      ```
+## 📚 Resources
 
-# Ressources
-https://medium.com/@afatir.ahmedfatir/unveiling-42-the-network-inception-a-dive-into-docker-and-docker-compose-cfda98d9f4ac#:~:text=subject.pdf.-,2-MariaDB%20Container,-This%20is%20the
-https://www.freecodecamp.org/news/the-nginx-handbook/?source=post_page-----cfda98d9f4ac--------------------------------#heading-how-to-write-your-first-configuration-file
-https://kinsta.com/knowledgebase/what-is-docker/
-https://www.youtube.com/watch?v=PrusdhS2lmo&t=3014s
-https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl
-https://medium.com/@aditya_misra5/dockerfile-best-practices-1de436c966a5
-https://www.digitalocean.com/community/tutorials/install-wordpress-nginx-ubuntu
-https://github.com/Xperaz/inception-42?tab=readme-ov-file#how-docker-work
-https://spacelift.io/blog/docker-compose
-https://github.com/KamranAzeem/learn-docker/blob/master/docs/docker-networking-deep-dive.md
-https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets
-https://www.notion.so/Docker-57ab9176d3bc4e36b6c3799ec43bc0b6
-https://medium.com/@moaminsharifi/unix-sockets-vs-tcp-ip-understanding-the-differences-and-choosing-the-right-networking-solution-e163edc0e802
-https://www.cloudways.com/blog/install-redis-cache-wordpress/
-https://emmer.dev/blog/docker-shell-vs.-exec-form/#shell-features
-https://github.com/waltergcc/42-inception?tab=readme-ov-file#131-the-dockerfile
+### 📦 Docker & Containers
+
+- [Unveiling 42 Inception – Docker & Compose Breakdown](https://medium.com/@afatir.ahmedfatir/unveiling-42-the-network-inception-a-dive-into-docker-and-docker-compose-cfda98d9f4ac)  
+  A step-by-step exploration of the Inception project at 42, with detailed explanations on each container.
+
+- [What is Docker? A Beginner-Friendly Guide](https://kinsta.com/knowledgebase/what-is-docker/)  
+  A high-level overview of Docker, containers, and their real-world benefits.
+
+- [Docker Compose Explained Simply](https://spacelift.io/blog/docker-compose)  
+  An intuitive breakdown of Docker Compose features, syntax, and use cases.
+
+- [Dockerfile Best Practices](https://medium.com/@aditya_misra5/dockerfile-best-practices-1de436c966a5)  
+  A guide to writing efficient and secure Dockerfiles with examples.
+
+- [Shell Form vs Exec Form in Docker](https://emmer.dev/blog/docker-shell-vs.-exec-form/#shell-features)  
+  Learn the differences between the two forms of executing commands in Dockerfiles and when to use each.
+
+---
+
+### 🌐 Networking & Communication
+
+- [Deep Dive into Docker Networking](https://github.com/KamranAzeem/learn-docker/blob/master/docs/docker-networking-deep-dive.md)  
+  A GitHub doc offering comprehensive insights into Docker networking: bridge, host, overlay, and more.
+
+- [UNIX Sockets vs TCP/IP – When to Use What?](https://medium.com/@moaminsharifi/unix-sockets-vs-tcp-ip-understanding-the-differences-and-choosing-the-right-networking-solution-e163edc0e802)  
+  A great comparison between Unix domain sockets and TCP/IP for container communication.
+
+- [UNIX vs TCP/IP Sockets – Baeldung](https://www.baeldung.com/linux/unix-vs-tcp-ip-sockets)  
+  Technical explanation of different communication mechanisms used inside Docker containers.
+
+---
+
+### 🌍 NGINX & SSL
+
+- [The NGINX Handbook](https://www.freecodecamp.org/news/the-nginx-handbook/?source=post_page-----cfda98d9f4ac--------------------------------#heading-how-to-write-your-first-configuration-file)  
+  A beginner-to-pro level guide on setting up and configuring NGINX.
+
+- [How to Generate a Self-Signed SSL Certificate](https://stackoverflow.com/questions/10175812/how-to-generate-a-self-signed-ssl-certificate-using-openssl)  
+  Essential reference for SSL/TLS encryption using OpenSSL.
+
+---
+
+### 🗄️ Databases & CMS
+
+- [Install WordPress with NGINX on Ubuntu](https://www.digitalocean.com/community/tutorials/install-wordpress-nginx-ubuntu)  
+  A manual setup of WordPress with NGINX, a useful reference for automation with Docker.
+
+- [Install Redis Cache for WordPress](https://www.cloudways.com/blog/install-redis-cache-wordpress/)  
+  Guide to adding Redis to optimize your WordPress instance.
+
+- [Install MariaDB on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-ubuntu-20-04)  
+  A beginner’s guide to installing MariaDB, which is used for WordPress storage.
+
+- [How Docker Works in the Inception Project](https://github.com/Xperaz/inception-42?tab=readme-ov-file#how-docker-work)  
+  Practical usage of Docker in a 42-school Inception setup.
+
+---
+
+### 📚 Extra Learning Tools
+
+- [Docker Notion Cheat Sheet](https://www.notion.so/Docker-57ab9176d3bc4e36b6c3799ec43bc0b6)  
+  A curated Notion resource on Docker, Compose, and container tools.
+
+- [YouTube: Docker Compose for Real-World Projects](https://www.youtube.com/watch?v=PrusdhS2lmo&t)
+  A practical crash course on Docker Compose, SSL, networking, and WordPress.
