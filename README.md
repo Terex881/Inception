@@ -370,9 +370,6 @@ In addition, it is possible to separate the web server and PHP by establishing a
 - [Install MariaDB on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-ubuntu-20-04)  
   A beginner’s guide to installing MariaDB, which is used for WordPress storage.
 
-- [How Docker Works in the Inception Project](https://github.com/Xperaz/inception-42?tab=readme-ov-file#how-docker-work)  
-  Practical usage of Docker in a 42-school Inception setup.
-
 ---
 
 ### 📚 Extra Learning Tools
