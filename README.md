@@ -301,7 +301,7 @@ In addition, it is possible to separate the web server and PHP by establishing a
   2. accede to the folder:
 
      ```
-       cd inception
+       cd Inception
      ```
 
   3. Build the images and deploy the infrastructure:
